@@ -2,7 +2,84 @@ window.addEventListener('load', () => {
   const loadingScreen = document.getElementById('loading-screen');
   const mainContent = document.getElementById('main-content');
   setTimeout(() => {
-      loadingScreen.style.display = 'none';
-      mainContent.style.display = 'flex';
+    loadingScreen.style.display = 'none';
+    mainContent.style.display = 'flex';
   }, 2000);
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('section');
+  const header = document.querySelector('header');
+  const burger = document.querySelector('.burger');
+  const nav = document.querySelector('.nav-links');
+  const scrollToTopButton = document.getElementById('scroll-to-top');
+
+  // Set initial active link to Home
+  const homeLink = document.querySelector('a[href="#home"]');
+  homeLink.classList.add('active');
+
+  function updateActiveLink() {
+    let currentSection = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - header.offsetHeight;
+      const sectionBottom = sectionTop + section.offsetHeight;
+      if (scrollY >= sectionTop && scrollY < sectionBottom) {
+        currentSection = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href').includes(currentSection)) {
+        link.classList.add('active');
+      }
+    });
+  }
+
+  function handleScrollToTopButton() {
+    if (window.scrollY > 300) {
+      scrollToTopButton.classList.add('show');
+    } else {
+      scrollToTopButton.classList.remove('show');
+      scrollToTopButton.classList.add('hide');
+    }
+  }
+
+  window.addEventListener('scroll', () => {
+    updateActiveLink();
+    handleScrollToTopButton();
+  });
+
+  // Add click event listeners to scroll to sections
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault(); // Prevent default link behavior
+      document.querySelector(link.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+      // Update active link after scrolling
+      updateActiveLink();
+    });
+  });
+
+  // Toggle burger menu
+  burger.addEventListener('click', () => {
+    nav.classList.toggle('active');
+    burger.classList.toggle('toggle');
+  });
+
+  // Close burger menu when a link is clicked
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('active');
+      burger.classList.remove('toggle');
+    });
+  });
+
+  // Scroll to top button functionality
+  scrollToTopButton.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    scrollToTopButton.classList.add('hide');
+  });
 });
