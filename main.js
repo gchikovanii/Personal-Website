@@ -83,3 +83,17 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollToTopButton.classList.add('hide');
   });
 });
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  setTimeout(function() {
+      document.getElementById("loader").classList.add("hidden");
+      document.getElementById("content").classList.remove("hidden");
+      
+      document.getElementById("profile-image").classList.add("animate-image");
+      document.getElementById("name").classList.add("animate-text");
+      document.querySelector(".passionate").classList.add("animate-text");
+      document.getElementById("btn-right").classList.add("animate-text");
+      document.getElementById("btn-left").classList.add("animate-text");
+  }, 2000); // Adjust this timeout as needed
+});
