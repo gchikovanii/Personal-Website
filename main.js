@@ -54,7 +54,10 @@ document.addEventListener('DOMContentLoaded', () => {
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault(); // Prevent default link behavior
-      document.querySelector(link.getAttribute('href')).scrollIntoView({
+      const targetSection = document.querySelector(link.getAttribute('href'));
+      const headerHeight = header.offsetHeight;
+      window.scrollTo({
+        top: targetSection.offsetTop - headerHeight, // Adjust scroll position
         behavior: 'smooth'
       });
       // Update active link after scrolling
@@ -97,6 +100,22 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.5 });
 
   aboutObserver.observe(aboutSection);
+
+  // Intersection Observer for Skills section animations
+  const skillsSection = document.getElementById('skills');
+  const skillsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Trigger animations by adding the animate-in class
+        document.querySelectorAll('.skill-item, .tool-item').forEach(item => {
+          item.classList.add('animate-in');
+        });
+        skillsObserver.unobserve(skillsSection); // Stop observing after animation
+      }
+    });
+  }, { threshold: 0.5 });
+
+  skillsObserver.observe(skillsSection);
 });
 
 window.addEventListener('load', () => {
@@ -110,13 +129,13 @@ window.addEventListener('load', () => {
 
 document.addEventListener("DOMContentLoaded", function() {
   setTimeout(function() {
-      document.getElementById("loader").classList.add("hidden");
-      document.getElementById("content").classList.remove("hidden");
+    document.getElementById("loader").classList.add("hidden");
+    document.getElementById("content").classList.remove("hidden");
 
-      document.getElementById("profile-image").classList.add("animate-image");
-      document.getElementById("name").classList.add("animate-text");
-      document.querySelector(".passionate").classList.add("animate-text");
-      document.getElementById("btn-right").classList.add("animate-text");
-      document.getElementById("btn-left").classList.add("animate-text");
+    document.getElementById("profile-image").classList.add("animate-image");
+    document.getElementById("name").classList.add("animate-text");
+    document.querySelector(".passionate").classList.add("animate-text");
+    document.getElementById("btn-right").classList.add("animate-text");
+    document.getElementById("btn-left").classList.add("animate-text");
   }, 2000); // Adjust this timeout as needed
 });
