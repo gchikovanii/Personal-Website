@@ -1,12 +1,3 @@
-window.addEventListener('load', () => {
-  const loadingScreen = document.getElementById('loading-screen');
-  const mainContent = document.getElementById('main-content');
-  setTimeout(() => {
-    loadingScreen.style.display = 'none';
-    mainContent.style.display = 'flex';
-  }, 2000);
-});
-
 document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelectorAll('.nav-link');
   const sections = document.querySelectorAll('section');
@@ -33,6 +24,14 @@ document.addEventListener('DOMContentLoaded', () => {
       link.classList.remove('active');
       if (link.getAttribute('href').includes(currentSection)) {
         link.classList.add('active');
+      }
+    });
+
+    // Add new logic to add class to the current section
+    document.querySelectorAll('section').forEach(section => {
+      section.classList.remove('section-active'); // Remove from all sections first
+      if (section.getAttribute('id') === currentSection) {
+        section.classList.add('section-active'); // Add to the current section
       }
     });
   }
@@ -82,14 +81,38 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     scrollToTopButton.classList.add('hide');
   });
+
+  // Intersection Observer for About section animations
+  const aboutSection = document.getElementById('about');
+  const aboutObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const aboutText = aboutSection.querySelector('.about-description');
+        const aboutImage = aboutSection.querySelector('.about-image img');
+        aboutText.classList.add('fadeInTwo');
+        aboutImage.classList.add('fadeInScaleTwo');
+        aboutObserver.unobserve(aboutSection); // Unobserve after animation
+      }
+    });
+  }, { threshold: 0.5 });
+
+  aboutObserver.observe(aboutSection);
 });
 
+window.addEventListener('load', () => {
+  const loadingScreen = document.getElementById('loading-screen');
+  const mainContent = document.getElementById('main-content');
+  setTimeout(() => {
+    loadingScreen.style.display = 'none';
+    mainContent.style.display = 'flex';
+  }, 2000);
+});
 
 document.addEventListener("DOMContentLoaded", function() {
   setTimeout(function() {
       document.getElementById("loader").classList.add("hidden");
       document.getElementById("content").classList.remove("hidden");
-      
+
       document.getElementById("profile-image").classList.add("animate-image");
       document.getElementById("name").classList.add("animate-text");
       document.querySelector(".passionate").classList.add("animate-text");
