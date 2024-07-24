@@ -6,6 +6,8 @@
   <title>GC25</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="src/images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
 </head>
 <body>
   <div id="loading-screen">
@@ -65,7 +67,9 @@
         </div>
       </section>
       <section id="skills">
-        <h2>Skills</h2>
+        <div class="skills-header">
+          <h3 class="projects_h3">Skills</h3>
+        </div>     
         <div class="skills-container">
             <div class="skills">
                 <img class="skill-item" src="src/images/csharplogo.png" alt="C#">
@@ -81,7 +85,7 @@
             </div>
         </div>
         <div>
-            <h3>Tools</h3>
+          <h3 class="projects_h3" style="font-size: 30px!important;">Technolodgies</h3>
             <div class="tools-container">
                 <div class="tools">
                     <img class="tool-item" src="src/images/docker.png" alt="Docker">
@@ -95,10 +99,168 @@
             </div>
         </div>
     </section>    
-      <section id="work">
-        <h2>Work</h2>
-        <p>Content for Work section...</p>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <section id="work" class="projects">
+      <div class="projects-header">
+        <h3 class="projects_h3">Projects</h3>
+      </div>
+      <div class="projects-container">
+          <div class="project-card">
+              <div class="project-header">
+                  <div class="folder">
+                    <i class="fa-solid fa-bookmark"></i>
+                  </div>
+                  <div class="links">
+                      <a href="https://github.com/gchikovanii/Kalakobana" target="_blank">
+                        <i class="fa-brands fa-github"></i>
+                      </a>
+                  </div>
+              </div>
+              <div class="project-body">
+                  <h4>Kalakobana</h4>
+                  <p>
+                    Experience the joys of creativity and problem-solving with an engaging and innovative game that brings interactive gameplay centered around the nostalgic feelings of childhood. Game captures the charm of classic gameplay with a nostalgic twist.
+                  </p>
+              </div>
+              <div class="project-footer">
+                  <ul>
+                      <li>Asp.Net Core</li>
+                      <li>Angular</li>
+                      <li>MSSQL</li>
+                      <li>MONGO</li>
+                  </ul>
+              </div>
+          </div>
+
+          <div class="project-card">
+              <div class="project-header">
+                  <div class="folder">
+                    <i class="fa-solid fa-bookmark"></i>
+                  </div>
+                  <div class="links">
+                      <a href="https://github.com/gchikovanii/EmphatyWave" target="_blank">
+                          <i class="fa-brands fa-github"></i>
+                      </a>
+                  </div>
+              </div>
+              <div class="project-body">
+                  <h4>Emphaty Wave</h4>
+                  <p>
+                    Emphaty Wave is an eCommerce website offering unique self-care products crafted from local and endemic flowers and plants, blending nature's best with innovative design to enhance your well-being and rejuvenate your senses.
+                  </p>
+              </div>
+              <div class="project-footer">
+                  <ul>
+                      <li>ASP.Net Core</li>
+                      <li>Blazor</li>
+                      <li>MSSQL</li>
+                      <li>REDIS</li>
+                  </ul>
+              </div>
+          </div>
+
+          <div class="project-card">
+              <div class="project-header">
+                  <div class="folder" >
+                    <i class="fa-solid fa-bookmark"></i>
+                  </div>
+                  <div class="links">
+                    <a href="https://github.com/gchikovanii/Events-Online-Booking" target="_blank">
+                      <i class="fa-brands fa-github"></i>
+                  </a>
+                  </div>
+              </div>
+              <div class="project-body">
+                  <h4>Academy Booking Events</h4>
+                  <p>This project is a booking events website designed to help you effortlessly discover and reserve unique and unforgettable experiences. It connects you with exclusive events, making it easy to enhance your lifestyle and create lasting memories.</p>
+              </div>
+              <div class="project-footer">
+                  <ul>
+                      <li>Asp.Net Core</li>
+                      <li>Asp.Net MVC</li>
+                      <li>MSSQL</li>
+                  </ul>
+              </div>
+          </div>
+
+          <div class="project-card hidden">
+              <div class="project-header">
+                  <div class="folder">
+                    <i class="fa-solid fa-bookmark"></i>
+                  </div>
+                  <div class="links">
+                      <a href="https://github.com/gchikovanii/TBC-BANK-ATM" target="_blank">
+                          <i class="fa-brands fa-github"></i>
+                      </a>
+                  </div>
+              </div>
+              <div class="project-body">
+                  <h4>TBC Bank ATM</h4>
+                  <p>
+                    This is a console based TBC BANK Atm! Customers can manage their accounts! Users can make card! They can change pin code which is generated by default! You can deposit and withdraw money which is the main idea of atm!
+                  </p>
+              </div>
+              <div class="project-footer">
+                  <ul>
+                      <li>C#</li>
+                      <li>Asp.Net Core</li>
+                  </ul>
+              </div>
+          </div>
+
+          <div class="project-card hidden">
+              <div class="project-header">
+                  <div class="folder">
+                    <i class="fa-solid fa-bookmark"></i>
+                  </div>
+                  <div class="links">
+                      <a href="https://github.com/gchikovanii/Snake_Console" target="_blank">
+                          <i class="fa-brands fa-github"></i>
+                      </a>
+                  </div>
+              </div>
+              <div class="project-body">
+                  <h4>Snake</h4>
+                  <p>This project is a recreation of the classic Snake game, developed as a simple console application in C#. The goal is for the snake to consume food, with the player winning the game by eating 35 jelly items.
+                  </p>
+              </div>
+              <div class="project-footer">
+                  <ul>
+                      <li>C#</li>
+                      <li>Console Application</li>
+                  </ul>
+              </div>
+          </div>
+          
+          <div class="project-card hidden">
+              <div class="project-header">
+                  <div class="folder">
+                    <i class="fa-solid fa-bookmark"></i>
+                  </div>
+                  <div class="links">
+                      <a href="https://github.com/gchikovanii/Questionnaire" target="_blank">
+                          <i class="fa-brands fa-github"></i>
+                      </a>
+                  </div>
+              </div>
+              <div class="project-body">
+                  <h4>Questionnaire</h4>
+                  <p>
+                    Questionnaire is a project aimed at gathering comprehensive information on global pandemic awareness, impacts, and responses, providing valuable insights into public perception and preparedness.
+                  </p>
+              </div>
+              <div class="project-footer">
+                  <ul>
+                      <li>Angular</li>
+                      <li>TypeScript</li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+
+      <div class="show-projects">
+          <button id="show-more-btn" class="btn-showmore">show more</button>
+      </div>
+  </section>
       </section>
       <section id="experience">
         <h2>Experience</h2>

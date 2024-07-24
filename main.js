@@ -139,3 +139,17 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("btn-left").classList.add("animate-text");
   }, 2000); // Adjust this timeout as needed
 });
+
+
+// Show/Hide more projects
+const showMoreBtn = document.getElementById('show-more-btn');
+let isExpanded = false;
+const hiddenProjects = document.querySelectorAll('.project-card.hidden');
+
+showMoreBtn.addEventListener('click', () => {
+  isExpanded = !isExpanded;
+  hiddenProjects.forEach(project => {
+    project.style.display = isExpanded ? 'block' : 'none';
+  })
+  showMoreBtn.textContent = isExpanded ? 'show less' : 'show more'
+});
