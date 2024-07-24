@@ -116,6 +116,24 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.5 });
 
   skillsObserver.observe(skillsSection);
+
+  // Intersection Observer for Education section animations
+  const educationSection = document.getElementById('education');
+  const educationObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const educationSteps = educationSection.querySelectorAll('.education-step');
+        educationSteps.forEach((step, index) => {
+          setTimeout(() => {
+            step.classList.add('animate-in');
+          }, index * 200); // Stagger the animation
+        });
+        educationObserver.unobserve(educationSection); // Unobserve after animation
+      }
+    });
+  }, { threshold: 0.5 });
+
+  educationObserver.observe(educationSection);
 });
 
 window.addEventListener('load', () => {
@@ -140,7 +158,6 @@ document.addEventListener("DOMContentLoaded", function() {
   }, 2000); // Adjust this timeout as needed
 });
 
-
 // Show/Hide more projects
 const showMoreBtn = document.getElementById('show-more-btn');
 let isExpanded = false;
@@ -150,6 +167,6 @@ showMoreBtn.addEventListener('click', () => {
   isExpanded = !isExpanded;
   hiddenProjects.forEach(project => {
     project.style.display = isExpanded ? 'block' : 'none';
-  })
-  showMoreBtn.textContent = isExpanded ? 'show less' : 'show more'
+  });
+  showMoreBtn.textContent = isExpanded ? 'show less' : 'show more';
 });
