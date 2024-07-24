@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const burger = document.querySelector('.burger');
   const nav = document.querySelector('.nav-links');
   const scrollToTopButton = document.getElementById('scroll-to-top');
+  const educationItems = document.querySelectorAll('.education-item');
+  const projectCards = document.querySelectorAll('.project-card');
 
   // Set initial active link to Home
   const homeLink = document.querySelector('a[href="#home"]');
@@ -27,11 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Add new logic to add class to the current section
     document.querySelectorAll('section').forEach(section => {
-      section.classList.remove('section-active'); // Remove from all sections first
+      section.classList.remove('section-active'); 
       if (section.getAttribute('id') === currentSection) {
-        section.classList.add('section-active'); // Add to the current section
+        section.classList.add('section-active');
       }
     });
   }
@@ -45,33 +46,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+
+  
   window.addEventListener('scroll', () => {
     updateActiveLink();
     handleScrollToTopButton();
   });
 
-  // Add click event listeners to scroll to sections
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
-      e.preventDefault(); // Prevent default link behavior
+      e.preventDefault();
       const targetSection = document.querySelector(link.getAttribute('href'));
       const headerHeight = header.offsetHeight;
       window.scrollTo({
-        top: targetSection.offsetTop - headerHeight, // Adjust scroll position
+        top: targetSection.offsetTop - headerHeight,
         behavior: 'smooth'
       });
-      // Update active link after scrolling
       updateActiveLink();
     });
   });
 
-  // Toggle burger menu
+
   burger.addEventListener('click', () => {
     nav.classList.toggle('active');
     burger.classList.toggle('toggle');
   });
 
-  // Close burger menu when a link is clicked
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
       nav.classList.remove('active');
@@ -79,13 +79,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Scroll to top button functionality
   scrollToTopButton.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     scrollToTopButton.classList.add('hide');
   });
 
-  // Intersection Observer for About section animations
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animated-in-education'); // For education items
+        observer.unobserve(entry.target);
+      }
+    });
+  });
+  
+  educationItems.forEach(item => observer.observe(item));
+  projectCards.forEach(card => observer.observe(card));
+
+
+
   const aboutSection = document.getElementById('about');
   const aboutObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -94,30 +106,27 @@ document.addEventListener('DOMContentLoaded', () => {
         const aboutImage = aboutSection.querySelector('.about-image img');
         aboutText.classList.add('fadeInTwo');
         aboutImage.classList.add('fadeInScaleTwo');
-        aboutObserver.unobserve(aboutSection); // Unobserve after animation
+        aboutObserver.unobserve(aboutSection); 
       }
     });
   }, { threshold: 0.5 });
 
   aboutObserver.observe(aboutSection);
 
-  // Intersection Observer for Skills section animations
   const skillsSection = document.getElementById('skills');
   const skillsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // Trigger animations by adding the animate-in class
         document.querySelectorAll('.skill-item, .tool-item').forEach(item => {
           item.classList.add('animate-in');
         });
-        skillsObserver.unobserve(skillsSection); // Stop observing after animation
+        skillsObserver.unobserve(skillsSection);
       }
     });
   }, { threshold: 0.5 });
 
   skillsObserver.observe(skillsSection);
 
-  // Intersection Observer for Education section animations
   const educationSection = document.getElementById('education');
   const educationObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -126,9 +135,9 @@ document.addEventListener('DOMContentLoaded', () => {
         educationSteps.forEach((step, index) => {
           setTimeout(() => {
             step.classList.add('animate-in');
-          }, index * 200); // Stagger the animation
+          }, index * 200); 
         });
-        educationObserver.unobserve(educationSection); // Unobserve after animation
+        educationObserver.unobserve(educationSection); 
       }
     });
   }, { threshold: 0.5 });
@@ -155,10 +164,9 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelector(".passionate").classList.add("animate-text");
     document.getElementById("btn-right").classList.add("animate-text");
     document.getElementById("btn-left").classList.add("animate-text");
-  }, 2000); // Adjust this timeout as needed
+  }, 2000); 
 });
 
-// Show/Hide more projects
 const showMoreBtn = document.getElementById('show-more-btn');
 let isExpanded = false;
 const hiddenProjects = document.querySelectorAll('.project-card.hidden');

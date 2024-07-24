@@ -64,11 +64,16 @@ header {
 
 .logo img {
   height: 50px;
-  margin-top: 10px; /* Add margin from the top */
-  transform: scale(2.7); /* Adjust the scaling factor as needed */
-  transform-origin: left center; /* Anchor the transformation to the left center */
+  margin-top: 10px; 
+  transform: scale(2.7); 
+  transform-origin: left center; 
 }
 
+.logo-footer img{
+  height: 150px;
+  margin-top: 10px;
+  transform: scale(1.7); 
+}
 nav {
   display: flex;
   align-items: center;
@@ -683,21 +688,7 @@ main {
 }
 
 
-.project-footer ul{
-  display: flex;
-  align-items: center;
-  justify-content:space-around;
-  column-gap: 10px;
-  bottom: 0!important;
-  list-style-type: none;
-  margin-top: 80px;
-  margin-left: -30px!important;
-}
 
-.project-footer li{
-  font-size: 13px;
-  opacity: 0.8;
-}
 
 .projects .show-projects{
   width: 100%;
@@ -857,13 +848,128 @@ main {
   right: -10px; 
 }
 
+.footer-text{
+  font-family: 'Merriweather', serif;
+  color: #DC143C;
+}
+footer {
+  background-color: transparent;
+  color: #fff;
+  padding: 20px 0;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+}
+
+.footer-left {
+  margin-left: 10%;
+}
+
+.footer-right {
+  margin-right: 10%;
+}
+
+.footer-right h1 {
+  margin-bottom: 10px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px; 
+}
+
+.social-icon {
+  display: block;
+  width: 50px;
+  height: 50px;
+  color: #fff;
+  text-align: center;
+  line-height: 50px;
+  text-decoration: none;
+}
+
+.social-icon i {
+  font-size: 24px;
+}
+
+.copyright {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
 
 
+.education-item {
+  opacity: 0;
+  transform: translateX(100px);
+}
 
+.project-card {
+  opacity: 0;
+  transform: scale(0.9);
+}
 
+.animated-in {
+  opacity: 1;
+  transform: translateX(0);
+}
 
+.animated-scale {
+  opacity: 1;
+  transform: scale(1);
+}
+.education-item {
+  opacity: 0;
+  transform: translateX(100px);
+}
+
+.animated-in-education {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+    
 @media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 2%;
+  }
 
+  .footer-left,
+  .footer-right {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .footer-right {
+    margin-top: 20px;
+  }
+
+  .social-icons {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+  }
+
+  .social-icon i {
+    font-size: 20px;
+  }
+
+  .copyright {
+    margin-top: 20px;
+  }
   .education-container:before {
     display: none; 
   }
