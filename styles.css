@@ -571,9 +571,11 @@ main {
   column-gap: 90px;
 }
 .projects{
-  margin-top: 120px;
+  margin-top: 30px;
 }
-
+#collaboration{
+  margin-top: 50px;
+}
 .projects-container .project-card{
   margin-top: 100px;
   max-width: 320px!important;

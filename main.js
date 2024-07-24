@@ -14,21 +14,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function updateActiveLink() {
     let currentSection = '';
+  
+    // Calculate active section
     sections.forEach(section => {
       const sectionTop = section.offsetTop - header.offsetHeight;
       const sectionBottom = sectionTop + section.offsetHeight;
+  
       if (scrollY >= sectionTop && scrollY < sectionBottom) {
         currentSection = section.getAttribute('id');
       }
     });
-
+  
+    // Special handling for the footer
+    const footer = document.querySelector('footer');
+    if (footer) {
+      const footerTop = footer.offsetTop;
+      const scrollBottom = scrollY + window.innerHeight;
+      const documentHeight = document.body.scrollHeight;
+  
+      // Check if the scroll position is within the footer area or at the very bottom of the page
+      if (scrollY >= footerTop) {
+        currentSection = 'footer'; // Ensure this matches the ID of your footer
+      } else if (scrollBottom >= documentHeight - 1) {
+        currentSection = 'collaboration'; // Ensure this matches the ID of your collaboration section
+      }
+    }
+  
+    // Update nav links
     navLinks.forEach(link => {
       link.classList.remove('active');
       if (link.getAttribute('href').includes(currentSection)) {
         link.classList.add('active');
       }
     });
-
+  
+    // Update section visibility
     document.querySelectorAll('section').forEach(section => {
       section.classList.remove('section-active'); 
       if (section.getAttribute('id') === currentSection) {
@@ -37,17 +57,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  let isButtonVisible = false;
+
   function handleScrollToTopButton() {
-    if (window.scrollY > 300) {
+    if (window.scrollY > 300 && !isButtonVisible) {
       scrollToTopButton.classList.add('show');
-    } else {
+      scrollToTopButton.classList.remove('hide');
+      isButtonVisible = true;
+    } else if (window.scrollY <= 300 && isButtonVisible) {
       scrollToTopButton.classList.remove('show');
       scrollToTopButton.classList.add('hide');
+      isButtonVisible = false;
     }
   }
 
-
-  
   window.addEventListener('scroll', () => {
     updateActiveLink();
     handleScrollToTopButton();
@@ -65,7 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
       updateActiveLink();
     });
   });
-
 
   burger.addEventListener('click', () => {
     nav.classList.toggle('active');
@@ -92,11 +114,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-  
+
   educationItems.forEach(item => observer.observe(item));
   projectCards.forEach(card => observer.observe(card));
-
-
 
   const aboutSection = document.getElementById('about');
   const aboutObserver = new IntersectionObserver((entries) => {
