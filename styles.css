@@ -1060,12 +1060,24 @@ footer {
     justify-items: center;
   }
 
-  /* .tools-container img {
-    width: 40px!important;
-    height: auto;
-  } */
   #collaboration{
     margin-top: 1px;
   }
+  .project-footer ul{
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+    column-gap: 10px;
+    bottom: 0!important;
+    list-style-type: none;
+    margin-top: 50px;
+    margin-left: -30px!important;
+  }
+  
+  .project-footer li{
+    font-size: 13px;
+    opacity: 0.8;
+  }
+
 }
 
