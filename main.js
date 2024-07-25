@@ -8,14 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const educationItems = document.querySelectorAll('.education-item');
   const projectCards = document.querySelectorAll('.project-card');
 
-  // Set initial active link to Home
   const homeLink = document.querySelector('a[href="#home"]');
   homeLink.classList.add('active');
 
   function updateActiveLink() {
     let currentSection = '';
   
-    // Calculate active section
     sections.forEach(section => {
       const sectionTop = section.offsetTop - header.offsetHeight;
       const sectionBottom = sectionTop + section.offsetHeight;
@@ -25,22 +23,19 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   
-    // Special handling for the footer
     const footer = document.querySelector('footer');
     if (footer) {
       const footerTop = footer.offsetTop;
       const scrollBottom = scrollY + window.innerHeight;
       const documentHeight = document.body.scrollHeight;
   
-      // Check if the scroll position is within the footer area or at the very bottom of the page
       if (scrollY >= footerTop) {
-        currentSection = 'footer'; // Ensure this matches the ID of your footer
+        currentSection = 'footer'; 
       } else if (scrollBottom >= documentHeight - 1) {
-        currentSection = 'collaboration'; // Ensure this matches the ID of your collaboration section
+        currentSection = 'collaboration'; 
       }
     }
   
-    // Update nav links
     navLinks.forEach(link => {
       link.classList.remove('active');
       if (link.getAttribute('href').includes(currentSection)) {
@@ -48,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   
-    // Update section visibility
     document.querySelectorAll('section').forEach(section => {
       section.classList.remove('section-active'); 
       if (section.getAttribute('id') === currentSection) {
@@ -109,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('animated-in-education'); // For education items
+        entry.target.classList.add('animated-in-education'); 
         observer.unobserve(entry.target);
       }
     });
