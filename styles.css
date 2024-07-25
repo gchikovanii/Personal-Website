@@ -5,8 +5,7 @@ html, body {
   background-color: #000;
   color: #fff;
   font-family: 'Merriweather', serif;
-  overflow-x: hidden;
-
+  /* overflow-x: hidden; */
 }
 #loading-screen {
   position: fixed;
@@ -923,7 +922,7 @@ footer {
   transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
     
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) and (orientation: portrait) {
   .navbar {
     margin-top: 10px;
   }
@@ -988,14 +987,14 @@ footer {
     width: 33.33%;
   }
   .tool-item img {
-    max-width: 70%; /* Reduce image size for medium screens */
+    max-width: 70%; 
   }
   .nav-links {
     display: none;
     flex-direction: column;
     background-color: rgba(0, 0, 0, 0.9);
     position: absolute;
-    top: 60px;
+    top: 100px;
     right: 0;
     width: 100%;
     height: calc(100vh - 60px);
@@ -1080,4 +1079,117 @@ footer {
   }
 
 }
+
+
+@media screen and (max-width: 1000px) and (max-height: 414px) and (orientation: landscape) {
+  .education-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .education-item h3 {
+    font-size: 1.2rem; 
+  }
+  .education-item p {
+    font-size: 0.9rem; 
+  }
+
+  .education-item img {
+    width: 75%; 
+  }
+  .education-container:before {
+    display: none; 
+  }
+ 
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  
+  .logo img {
+    height: 30px;
+    margin-top: 10px; 
+    transform: scale(2.3); 
+    transform-origin: left center; 
+  }
+  nav li {
+    margin-left: 10px;
+  }
+  #home{
+    margin-top: 50px;
+  }
+
+  .projects-container .project-card{
+    margin-top: 100px;
+    max-width: 220px!important;
+    height: 400px;
+    padding: 1rem 1rem;
+    border-radius: 5px;
+    background-color: #DC143C;
+    opacity: 0.9;
+    transition: 0.3s ease;
+    margin: 0 10px;
+  }
+
+
+  .projects .links i{
+    font-size: 25px;
+    margin-left: 15px;
+    color: white;
+  }
+  .projects-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 20px 0;
+  }
+  
+  .projects-header::before,
+  .projects-header::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background-color: #DC143C; 
+    margin: 0 10px; 
+  }
+  
+
+  .project-footer ul{
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+    column-gap: 10px;
+    bottom: 0!important;
+    list-style-type: none;
+    margin-top: 25px;
+    margin-left: -30px!important;
+  }
+  
+  .project-footer li{
+    font-size: 11px;
+    opacity: 0.8;
+  }
+  .prs{
+    margin-top: 100px!important;
+  }
+  .logo-footer img{
+    height: 100px;
+    margin-top: 10px;
+    transform: scale(1.7); 
+  }
+  .footer-left{
+    margin-right: 100px;
+  }
+  .footer-right{
+    margin-left: 100px;
+
+  }
+}
+
 
