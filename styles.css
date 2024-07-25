@@ -5,8 +5,9 @@ html, body {
   background-color: #000;
   color: #fff;
   font-family: 'Merriweather', serif;
-}
+  overflow-x: hidden;
 
+}
 #loading-screen {
   position: fixed;
   width: 100%;
@@ -923,6 +924,10 @@ footer {
 }
     
 @media screen and (max-width: 768px) {
+  .navbar {
+    margin-top: 10px;
+  }
+
   .container {
     flex-direction: column;
     align-items: flex-start;
@@ -959,35 +964,32 @@ footer {
   .copyright {
     margin-top: 20px;
   }
-  .education-container:before {
-    display: none; 
+  .tool-item {
+    width: 33.33%;
+  }
+  .education-container {
+    flex-direction: column;
+    align-items: center; 
   }
 
   .education-item {
-    flex-direction: column; 
-    align-items: center; 
-    margin-bottom: 40px; 
+    width: 100%;
   }
 
-  .education-item.left {
-    justify-content: center!important; 
-  }
+  .education-item.left,
   .education-item.right {
-    justify-content: center!important; 
-    right: 10px;
+    text-align: left; 
   }
 
-  .education-content {
-    max-width: 100%;
-    text-align: center; 
-    border-left: none;
-    border-right: none;
+  .education-container:before {
+    display: none;
   }
-
-  .education-item:before {
-    display: none; 
+  .tool-item {
+    width: 33.33%;
   }
-
+  .tool-item img {
+    max-width: 70%; /* Reduce image size for medium screens */
+  }
   .nav-links {
     display: none;
     flex-direction: column;
@@ -1023,7 +1025,6 @@ footer {
     transform: rotate(45deg) translate(-5px, -6px);
   }
 
-
   .btn {
     font-size: 0.9rem;
     padding: 8px 16px;
@@ -1043,24 +1044,28 @@ footer {
     margin-right: auto;
     margin-left: auto;
     width: 80%;
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
   }
 
   .about-image img {
-    width: 80%; 
-    height: auto; 
+    width: 80%;
+    height: auto;
     margin-right: auto;
     margin-left: auto;
   }
 
-  .skills img, .tools img {
-    width: 80px; 
-  }
-  .projects .projects-container{
+  .projects .projects-container {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     justify-items: center;
   }
-}
 
+  /* .tools-container img {
+    width: 40px!important;
+    height: auto;
+  } */
+  #collaboration{
+    margin-top: 1px;
+  }
+}
 
